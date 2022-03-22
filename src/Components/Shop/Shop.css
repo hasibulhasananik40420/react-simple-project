@@ -1,0 +1,13 @@
+.container{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.cart-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 42px;
+    margin-left: 50px;
+    margin-right: 30px;
+    padding-top: 30px;
+}
