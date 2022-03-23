@@ -3,8 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 140px;
-    padding-right: 135px;
+    padding: 15px 135px;
 }
 .navbar a{
     text-decoration: none;
@@ -26,3 +25,7 @@
 .navbar a:hover::after{
     width: 100%;
 }
+.icon{
+    display: none;
+}
+

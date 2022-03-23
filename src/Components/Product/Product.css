@@ -1,5 +1,5 @@
 .product{
-    border: 1px solid gray;
+    border: 1px solid rgb(133, 129, 129);
     border-radius: 8px;
     position: relative;
     height: 508px;
@@ -37,7 +37,7 @@
     transition: all .8s;
 }
 .summary{
-    background-color: #fdcba1;
+    background-color: rgba(255, 153, 0, 0.3);
 }
 .summary h3{
     text-align: center;
