@@ -12,7 +12,7 @@ const Shop = () => {
         .then(data => setProducts(data))
     },[])
      
-    
+    // use effect
      useEffect(()=>{
 
       const storedCart= getStoredCart()
