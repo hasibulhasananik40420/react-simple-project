@@ -11,6 +11,16 @@
     margin-right: 30px;
     padding-top: 30px;
 }
+.shop-btn{
+    border: none;
+    background: #FF9900;
+    border-radius: 4px;
+    margin-left: 20px;
+    margin-right: 10px;
+    width: 220px;
+    height: 45px;
+    font-size: medium;
+}
 
  /* responsive for mobile device */
 
@@ -19,8 +29,5 @@
            display: grid;
            grid-template-columns: repeat(1 , 1fr);
        }
-       /* .summary{
-           display: grid;
-           grid-template-columns: repeat(1,1fr);
-       } */
+       
  }

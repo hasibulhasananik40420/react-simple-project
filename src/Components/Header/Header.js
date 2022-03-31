@@ -1,6 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../images/Logo.svg'
 import './Header.css'
 const Header = () => {
@@ -9,14 +8,12 @@ const Header = () => {
             <div className="logo">
              <img src={logo} alt="" />
             </div>
-             {/* <FontAwesomeIcon className='icon' icon={faCoffee}></FontAwesomeIcon> */}
             <div className="navbar">
-               <a href="/shop">Shop</a>
-               <a href="/order"> Order</a>
-               <a href="/invantory">Invantory</a>
-               <a href="/about">About</a>
+               <Link to="/shop">Shop</Link>
+               <Link to="/orders"> Orders</Link>
+               <Link to="/invantory">Invantory</Link>
+               <Link to="/about">About</Link>
             </div>
-            {/* <FontAwesomeIcon className='icon' icon={faCoffee}></FontAwesomeIcon> */}
 
         </div>
     );
