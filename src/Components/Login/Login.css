@@ -27,6 +27,7 @@
         box-sizing: border-box;
         border-radius: 5px;
         font-size: 24px;
+        padding-left: 8px;
     }
     .from-submit{
         width: 415px;
