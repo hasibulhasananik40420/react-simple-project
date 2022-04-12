@@ -1,0 +1,27 @@
+.line{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.line div{
+    border: 1px solid #95A0A7;
+    width: 60%;
+    margin:0px 15px;
+    height: 0px;
+}
+.btn {
+    width: 415px;
+    height: 55px;
+    border: 1px solid #95A0A7;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+.btn img {
+    width: 6%;  
+    margin-right: 10px;
+}

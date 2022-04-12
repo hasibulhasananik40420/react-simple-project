@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Login.css'
+import googleLogo from '../../Artist/images/google.svg'
 const Login = () => {
      const [email , setEmail] =useState('')
      const [password , setPassword] =useState('')
@@ -18,7 +19,13 @@ const Login = () => {
         error,
       ] = useSignInWithEmailAndPassword(auth);
 
-       
+       //google login 
+        
+       const [singInWithGoogle ] = useSignInWithGoogle(auth)
+
+       const handleWithGoogle =()=>{
+        singInWithGoogle()
+       }
        
      const handleEmailBlur =event=>{
          setEmail(event.target.value)
@@ -60,6 +67,16 @@ const Login = () => {
             <p>
                 New to Ema-Jhon ? <Link className='from-link' to='/singup'>Create an account</Link>
             </p>
+            <div className='line'>
+                <div> </div>
+                <p> or</p>
+                <div></div>
+             </div>
+              
+            <div onClick={()=>handleWithGoogle()} className='btn'>
+                <img src={googleLogo} alt="" />
+            <p> Continue with Google</p>
+            </div>
            </div>
         </div>
     );
