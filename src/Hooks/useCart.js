@@ -7,7 +7,7 @@ import { getStoredCart } from "../utilities/fakedb"
        const storeCart = getStoredCart()
        const saveCart = [];
        for(const id in storeCart){
-          const addedProduct = products.find(product=> product.id===id)
+          const addedProduct = products.find(product=> product._id===id)
           if(addedProduct){
             const quantity = storeCart[id]
             addedProduct.quantity = quantity

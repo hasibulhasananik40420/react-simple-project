@@ -21,6 +21,24 @@
     height: 45px;
     font-size: medium;
 }
+.pagecount{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
+.pagecount .selected{
+    background-color: #FF9900;
+    color: white;
+}
+
+.pagecount button{
+    margin-left: 15px;
+}
+.dopdown{
+    background-color: antiquewhite;
+    margin-left: 15px;
+
+}
 
  /* responsive for mobile device */
 

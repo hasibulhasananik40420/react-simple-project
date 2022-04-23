@@ -6,22 +6,43 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
-    const [products, setProducts] = useProducts()
+    // const [products, setProducts] = useProducts()
     const [cart,setCart] =useState([])
-    // useEffect(()=>{
-    //     fetch('products.json')
-    //     .then(res => res.json())
-    //     .then(data => setProducts(data))
-    // },[])
-     
-    // use effect
+    const [pageCount , setPageCount] = useState(0)
+    const [page , setPage] = useState(0)
+    const [size ,setSize] = useState(10)
+
+
+    const [products, setProducts] = useState([])
+    useEffect(()=>{
+
+      fetch(`http://localhost:5000/product?page=${page}&size${size}`)
+      .then(res=> res.json())
+      .then(data=> setProducts(data))
+    }, [])
+
+
+
+
+
+    useEffect(()=>{
+      fetch('http://localhost:5000/productCount')
+      .then(res=> res.json())
+      .then(data=>{
+        const count = data.count
+        const pages = Math.ceil(count/10)
+        setPageCount(pages)
+      })
+    } ,[])
+
+
      useEffect(()=>{
 
       const storedCart= getStoredCart()
       const saveCart =[]
       for(const id in storedCart){
         //   console.log(id);
-        const addedProduct = products.find(product=> product.id==id)
+        const addedProduct = products.find(product=> product._id==id)
           if(addedProduct){
             const quantity = storedCart[id]
             addedProduct.quantity = quantity
@@ -35,19 +56,19 @@ const Shop = () => {
 
        const handleAddToCart=(selectedProduct)=>{
          let newCart =[]
-         const exists = cart.find(product => product.id ===selectedProduct.id)
+         const exists = cart.find(product => product._id ===selectedProduct._id)
          if(!exists){
            selectedProduct.quantity = 1
            newCart = [...cart , selectedProduct]
          }
          else{
-            const rest = cart.filter(product=>product.id !== selectedProduct.id)
+            const rest = cart.filter(product=>product._id !== selectedProduct._id)
             exists.quantity = exists.quantity + 1
             newCart = [...rest,exists]
          }
         //  console.log('click');
          setCart(newCart)
-         addToDb(selectedProduct.id)
+         addToDb(selectedProduct._id)
        }
 
     return (
@@ -55,9 +76,15 @@ const Shop = () => {
              <div className="cart-container">
                  {
                      products.map(product=>
-                     <Product key={product.id} product={product} handleAddToCart={handleAddToCart} ></Product>)
+                     <Product key={product._id} product={product} handleAddToCart={handleAddToCart} ></Product>)
                  }
              </div>
+              
+              {/* <div>
+                {
+                  [...Array(pageCount).keys()].map(number=> <a> {number} </a>)
+                }
+              </div> */}
 
              <div className="summary">
                 <Cart cart={cart}>
@@ -66,7 +93,18 @@ const Shop = () => {
                </Link>
                 </Cart>
              </div>
-        </div>
+             <div className='pagecount'>
+                {
+                  [...Array(pageCount).keys()].map(number=> <button className={page===number ? 'selected' : ''} onClick={()=> setPage(number)}> {number + 1} </button>)
+                }
+                <select className='dopdown' onChange={e=> setSize(e.target.value)}>
+                  <option value="5">5</option>
+                  <option value="10" selected>10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                </select>
+              </div>
+        </div> 
     );
 };
 
