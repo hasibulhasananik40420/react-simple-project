@@ -25,8 +25,16 @@ const Login = () => {
 
        const handleWithGoogle =()=>{
         singInWithGoogle()
+
        }
        
+       useEffect(()=>{
+        if(user){
+            // navigate(from , {replace: true}) 
+            navigate('/shop') 
+        }
+     }, [user])
+
      const handleEmailBlur =event=>{
          setEmail(event.target.value)
      }
@@ -34,13 +42,6 @@ const Login = () => {
          setPassword(event.target.value)
      }
       
-     useEffect(()=>{
-        if(user){
-            navigate(from , {replace: true}) 
-        }
-     }, [user])
-
-     
 
     const handleFromSubmit =event=>{
         event.preventDefault()

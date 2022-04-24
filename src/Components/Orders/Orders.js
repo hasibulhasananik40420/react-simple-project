@@ -8,7 +8,7 @@ import ReviewItem from '../reviewItem/ReviewItem';
 import './Orders.css'
 const Orders = () => {
     const [products , setProducts] = useProducts()
-    const [cart , setCart] = useCart(products)
+    const [cart , setCart] = useCart()
 
      const handleRemoveProduct = product=>{
            console.log(product);
